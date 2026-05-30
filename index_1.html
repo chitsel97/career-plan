@@ -1,0 +1,856 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Justin 生涯規劃 2026–2027</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Noto+Sans+TC:wght@400;500;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #ffffff;
+  --bg2: #f7f6f3;
+  --bg3: #f0ede8;
+  --border: #e8e4de;
+  --border2: #d4cfc8;
+  --text: #1a1814;
+  --text2: #6b6560;
+  --text3: #a8a39c;
+  --blue: #1a56db;
+  --blue-bg: #eff4ff;
+  --blue-border: #c7d7fa;
+  --purple: #6b3fa0;
+  --purple-bg: #f3eeff;
+  --purple-border: #d9c9f5;
+  --green: #0e6640;
+  --green-bg: #edfaf1;
+  --green-border: #b9e9c9;
+  --amber: #854d0e;
+  --amber-bg: #fffbeb;
+  --amber-border: #fde68a;
+  --coral: #9f1239;
+  --coral-bg: #fff1f2;
+  --coral-border: #fecdd3;
+  --serif: 'Playfair Display', serif;
+  --sans: 'Noto Sans TC', sans-serif;
+  --mono: 'DM Mono', monospace;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--sans);
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+/* Header */
+.header {
+  background: var(--bg);
+  border-bottom: 1.5px solid var(--border);
+  padding: 1.75rem 2.5rem;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+.header-title {
+  font-family: var(--serif);
+  font-size: 22px;
+  color: var(--text);
+  letter-spacing: .01em;
+  line-height: 1.2;
+}
+.header-sub {
+  font-size: 13px;
+  color: var(--text3);
+  margin-top: 4px;
+  font-family: var(--mono);
+  letter-spacing: .02em;
+}
+.header-actions { display: flex; gap: 8px; flex-wrap: wrap; }
+.btn {
+  font-family: var(--mono);
+  font-size: 12px;
+  padding: 8px 16px;
+  border-radius: 6px;
+  border: 1.5px solid var(--border2);
+  background: var(--bg);
+  color: var(--text2);
+  cursor: pointer;
+  transition: all .15s;
+  letter-spacing: .02em;
+}
+.btn:hover { border-color: var(--text2); color: var(--text); background: var(--bg2); }
+.btn-accent {
+  border-color: var(--purple-border);
+  background: var(--purple-bg);
+  color: var(--purple);
+}
+.btn-accent:hover { border-color: var(--purple); }
+
+/* Stats */
+.stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border-bottom: 1.5px solid var(--border);
+}
+.stat {
+  padding: 1.5rem 2rem;
+  border-right: 1px solid var(--border);
+}
+.stat:last-child { border-right: none; }
+.stat-label {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--text3);
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+.stat-val {
+  font-family: var(--serif);
+  font-size: 36px;
+  color: var(--text);
+  line-height: 1;
+}
+.stat-sub {
+  font-size: 12px;
+  color: var(--text3);
+  margin-top: 5px;
+}
+.stat-bar {
+  height: 3px;
+  background: var(--border);
+  border-radius: 2px;
+  margin-top: 12px;
+  overflow: hidden;
+}
+.stat-bar-fill {
+  height: 100%;
+  border-radius: 2px;
+  transition: width .7s cubic-bezier(.4,0,.2,1);
+}
+
+/* Tabs */
+.tabs {
+  display: flex;
+  border-bottom: 1.5px solid var(--border);
+  overflow-x: auto;
+  scrollbar-width: none;
+  background: var(--bg);
+  position: sticky;
+  top: 89px;
+  z-index: 90;
+}
+.tabs::-webkit-scrollbar { display: none; }
+.tab {
+  font-family: var(--mono);
+  font-size: 12px;
+  padding: 16px 24px;
+  border: none;
+  background: transparent;
+  color: var(--text3);
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  white-space: nowrap;
+  transition: all .15s;
+  letter-spacing: .03em;
+  line-height: 1.4;
+  text-align: left;
+}
+.tab:hover { color: var(--text2); background: var(--bg2); }
+.tab.active {
+  color: var(--text);
+  border-bottom-color: var(--text);
+  background: var(--bg);
+}
+
+/* Content */
+.content { padding: 2rem 2.5rem 5rem; max-width: 900px; }
+
+/* Exam card */
+.exam-card {
+  border: 1.5px solid var(--border);
+  border-radius: 10px;
+  margin-bottom: 16px;
+  overflow: hidden;
+  background: var(--bg);
+  transition: border-color .15s, box-shadow .15s;
+}
+.exam-card:hover {
+  border-color: var(--border2);
+  box-shadow: 0 2px 12px rgba(0,0,0,.05);
+}
+.exam-head {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 18px;
+  background: var(--bg2);
+  border-bottom: 1px solid var(--border);
+}
+.exam-stripe {
+  width: 4px;
+  height: 32px;
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+.exam-title-wrap { flex: 1 }
+.exam-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text);
+  line-height: 1.3;
+}
+.exam-cost {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--text3);
+  margin-top: 2px;
+}
+.exam-pct {
+  font-family: var(--serif);
+  font-size: 20px;
+  min-width: 48px;
+  text-align: right;
+  font-weight: 600;
+}
+.exam-body { padding: 0 18px 6px; }
+.exam-prep {
+  font-size: 13px;
+  color: var(--text2);
+  padding: 12px 0 10px;
+  border-bottom: 1px solid var(--border);
+  line-height: 1.8;
+}
+
+/* Chapter */
+.ch-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--border);
+}
+.ch-row:last-of-type { border-bottom: none; }
+.ch-check {
+  width: 18px; height: 18px;
+  border: 1.5px solid var(--border2);
+  border-radius: 4px;
+  flex-shrink: 0;
+  cursor: pointer;
+  margin-top: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all .15s;
+  background: var(--bg);
+}
+.ch-check:hover { border-color: var(--purple); background: var(--purple-bg); }
+.ch-check.done { background: var(--text); border-color: var(--text); }
+.ch-check.done::after {
+  content: '';
+  width: 9px; height: 6px;
+  border-left: 2px solid #fff;
+  border-bottom: 2px solid #fff;
+  transform: rotate(-45deg) translate(1px,-1px);
+  display: block;
+}
+.ch-info { flex: 1; min-width: 0; }
+.ch-name-line {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.ch-name {
+  font-size: 14px;
+  color: var(--text);
+  line-height: 1.5;
+  flex: 1;
+}
+.ch-name.done { color: var(--text3); text-decoration: line-through; }
+.ch-date {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--text3);
+  white-space: nowrap;
+}
+.ch-note {
+  font-size: 12px;
+  color: var(--text3);
+  margin-top: 2px;
+}
+.ch-badge {
+  font-family: var(--mono);
+  font-size: 10px;
+  padding: 2px 7px;
+  border-radius: 3px;
+  flex-shrink: 0;
+}
+.badge-hot { background: var(--amber-bg); color: var(--amber); border: 1px solid var(--amber-border); }
+.badge-key { background: var(--coral-bg); color: var(--coral); border: 1px solid var(--coral-border); }
+.badge-daily { background: var(--green-bg); color: var(--green); border: 1px solid var(--green-border); }
+.badge-exam { background: var(--blue-bg); color: var(--blue); border: 1px solid var(--blue-border); }
+.badge-default { background: var(--bg3); color: var(--text2); border: 1px solid var(--border); }
+
+.edit-btn {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--text3);
+  cursor: pointer;
+  padding: 3px 8px;
+  border-radius: 4px;
+  border: 1px solid transparent;
+  background: transparent;
+  flex-shrink: 0;
+  transition: all .12s;
+}
+.edit-btn:hover { border-color: var(--border2); color: var(--text2); background: var(--bg2); }
+
+/* Edit form */
+.edit-form {
+  background: var(--bg2);
+  border: 1.5px solid var(--border2);
+  border-radius: 8px;
+  padding: 12px;
+  margin: 4px 0 10px 30px;
+}
+.edit-form input, .edit-form textarea {
+  width: 100%;
+  background: var(--bg);
+  border: 1.5px solid var(--border);
+  border-radius: 6px;
+  color: var(--text);
+  font-family: var(--sans);
+  font-size: 13px;
+  padding: 7px 10px;
+  margin-bottom: 7px;
+  outline: none;
+  transition: border-color .15s;
+}
+.edit-form input:focus, .edit-form textarea:focus { border-color: var(--purple); }
+.edit-form textarea { resize: vertical; min-height: 52px; }
+.ef-row { display: flex; gap: 7px; }
+.ef-row input { margin-bottom: 0; }
+.ef-actions { display: flex; gap: 7px; margin-top: 8px; }
+.ef-save {
+  font-family: var(--mono);
+  font-size: 12px;
+  padding: 6px 14px;
+  border-radius: 5px;
+  border: 1.5px solid var(--purple-border);
+  background: var(--purple-bg);
+  color: var(--purple);
+  cursor: pointer;
+  transition: all .12s;
+}
+.ef-save:hover { border-color: var(--purple); }
+.ef-cancel {
+  font-family: var(--mono);
+  font-size: 12px;
+  padding: 6px 14px;
+  border-radius: 5px;
+  border: 1.5px solid var(--border2);
+  background: var(--bg);
+  color: var(--text3);
+  cursor: pointer;
+}
+.ef-del {
+  font-family: var(--mono);
+  font-size: 12px;
+  padding: 6px 14px;
+  border-radius: 5px;
+  border: 1.5px solid var(--coral-border);
+  background: var(--coral-bg);
+  color: var(--coral);
+  cursor: pointer;
+  margin-left: auto;
+}
+
+.add-ch {
+  font-family: var(--mono);
+  font-size: 12px;
+  color: var(--text3);
+  cursor: pointer;
+  padding: 9px 0 5px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  background: none;
+  border: none;
+  transition: color .12s;
+}
+.add-ch:hover { color: var(--purple); }
+
+/* Toast */
+.toast {
+  position: fixed;
+  bottom: 28px;
+  left: 50%;
+  transform: translateX(-50%) translateY(6px);
+  background: var(--text);
+  color: #fff;
+  font-family: var(--mono);
+  font-size: 12px;
+  padding: 9px 18px;
+  border-radius: 6px;
+  opacity: 0;
+  transition: all .2s;
+  pointer-events: none;
+  z-index: 999;
+  white-space: nowrap;
+}
+.toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+.qpanel { display: none; }
+.qpanel.active { display: block; }
+
+@media (max-width: 640px) {
+  .header { padding: 1.25rem 1.25rem; }
+  .header-title { font-size: 18px; }
+  .stats { grid-template-columns: repeat(2, 1fr); }
+  .stat { padding: 1.25rem 1.25rem; border-bottom: 1px solid var(--border); }
+  .content { padding: 1.25rem 1.25rem 4rem; }
+  .tabs { top: 82px; }
+}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div>
+    <div class="header-title">Justin 生涯規劃 2026–2027</div>
+    <div class="header-sub">28歲 · 東吳精算 · 目標：股票研究員 / 企業評價分析師</div>
+  </div>
+  <div class="header-actions">
+    <button class="btn" onclick="resetProgress()">重置進度</button>
+    <button class="btn btn-accent" onclick="exportStatus()">匯出進度</button>
+  </div>
+</div>
+
+<div class="stats">
+  <div class="stat">
+    <div class="stat-label">總體完成</div>
+    <div class="stat-val" id="s-pct">0%</div>
+    <div class="stat-sub" id="s-sub">讀取中…</div>
+    <div class="stat-bar"><div class="stat-bar-fill" id="s-bar" style="width:0%;background:var(--text)"></div></div>
+  </div>
+  <div class="stat">
+    <div class="stat-label">本季完成</div>
+    <div class="stat-val" id="q-pct">0%</div>
+    <div class="stat-sub" id="q-sub">—</div>
+    <div class="stat-bar"><div class="stat-bar-fill" id="q-bar" style="width:0%;background:var(--purple)"></div></div>
+  </div>
+  <div class="stat">
+    <div class="stat-label">已完成章節</div>
+    <div class="stat-val" id="s-done">0</div>
+    <div class="stat-sub">個章節</div>
+  </div>
+  <div class="stat">
+    <div class="stat-label">待完成章節</div>
+    <div class="stat-val" id="s-left">0</div>
+    <div class="stat-sub">個章節</div>
+  </div>
+</div>
+
+<div class="tabs" id="tabs"></div>
+<div class="content" id="content"></div>
+<div class="toast" id="toast"></div>
+
+<script>
+const STORAGE_KEY = 'justin_plan_v5';
+
+const RAW = [
+  {id:'q1',label:'2026 Q3',sub:'6月─9月',exams:[
+    {id:'fm',title:'SOA Exam FM',color:'#1a56db',
+     cost:'USD 285 ≈ NT$9,100　｜　報名截止：考前 4–6 週',
+     prep:'計算題為主，熟練 BA II Plus 計算機。利息、年金公式要背。每天 2 小時，總準備期約 10 週。高頻考點：年金現值、債券定價、Immunization。',
+     chapters:[
+      {id:'fm1',name:'利息理論：現值、終值、折現率、有效利率',date:'6/1–6/14',note:'',badge:''},
+      {id:'fm2',name:'年金：確定型年金、等差等比年金',date:'6/15–6/28',note:'',badge:''},
+      {id:'fm3',name:'貸款攤還：Amortization Schedule',date:'6/29–7/7',note:'',badge:''},
+      {id:'fm4',name:'債券定價：票面利率、殖利率、折溢價',date:'7/8–7/18',note:'',badge:''},
+      {id:'fm5',name:'存續期間、凸性、利率免疫（Immunization）',date:'7/19–7/28',note:'',badge:'高頻'},
+      {id:'fm6',name:'衍生品基礎：期貨、選擇權、Swap 入門',date:'7/29–8/7',note:'',badge:''},
+      {id:'fm7',name:'全真模擬題 x3 + 弱點補強',date:'8/8–8/25',note:'',badge:''},
+      {id:'fm8',name:'SOA Exam FM 正式應考',date:'8月底',note:'報名截止：7 月中前完成',badge:'考試'},
+    ]},
+    {id:'toeic0',title:'多益 TOEIC 備考啟動',color:'#0e6640',
+     cost:'NT$1,800　｜　每天 25–30 分鐘',
+     prep:'BBC 6 Min English（早）+ Reuters 財經新聞（午）+ AI 口說（晚）。500→800 差距主要在聽力 Part 3–4，習慣比爆發力重要。',
+     chapters:[
+      {id:'t0a',name:'每日：BBC 6 Min English（早）+ Reuters 財經新聞（午）',date:'6/1 起每天',note:'10 分鐘聽力 + 15 分鐘閱讀',badge:'每日'},
+      {id:'t0b',name:'每晚：AI 英文口說練習 10 分鐘',date:'6/1 起每天',note:'',badge:'每日'},
+    ]},
+  ]},
+  {id:'q2',label:'2026 Q4',sub:'10月─12月',exams:[
+    {id:'p',title:'SOA Exam P',color:'#1a56db',
+     cost:'USD 285 ≈ NT$9,100　｜　報名截止：考前 4–6 週',
+     prep:'精算背景可快速準備，準備期 6–8 週。連續分配（Exponential、Normal、Gamma）佔比最高。ACTEX 或 ASM Manual + SOA 官方樣題，每天 20–30 題。',
+     chapters:[
+      {id:'p1',name:'機率基礎：連續 + 離散分配',date:'10/1–10/10',note:'',badge:''},
+      {id:'p2',name:'條件機率、貝氏定理',date:'10/11–10/17',note:'',badge:''},
+      {id:'p3',name:'期望值、變異數、動差生成函數',date:'10/18–10/24',note:'',badge:''},
+      {id:'p4',name:'聯合分配、相關係數、協變數',date:'10/25–11/3',note:'',badge:''},
+      {id:'p5',name:'全真模擬題 x3 + 弱點補強',date:'11/4–11/20',note:'',badge:''},
+      {id:'p6',name:'SOA Exam P 正式應考',date:'11月底',note:'報名截止：10 月初前完成',badge:'考試'},
+    ]},
+    {id:'toeic',title:'多益 TOEIC 衝刺應考',color:'#0e6640',
+     cost:'NT$1,800　｜　報名截止：考前 1 個月',
+     prep:'FM 考完後全力衝多益。Part 3–4 聽力是 500→800 的關鍵，每天做模擬題。Part 7 長文先看題再找答案，時間分配決定分數。',
+     chapters:[
+      {id:'tc1',name:'Part 1–2：照片描述、應答題練習',date:'10月',note:'',badge:''},
+      {id:'tc2',name:'Part 3–4：對話 + 演說，裸聽→對稿→再聽',date:'10–11月',note:'',badge:'關鍵'},
+      {id:'tc3',name:'Part 5–7：文法填空 + 單/多篇閱讀',date:'10–11月',note:'',badge:''},
+      {id:'tc4',name:'全真模擬題 x2（ETS 官方）',date:'11月',note:'',badge:''},
+      {id:'tc5',name:'多益正式應考（目標 800+）',date:'11月底',note:'',badge:'考試'},
+    ]},
+    {id:'cfareg',title:'CFA L1 早鳥報名',color:'#6b3fa0',
+     cost:'USD 940 Early ≈ NT$30,000　｜　比 Standard 省 USD 200–350',
+     prep:'10–11 月完成 Early Registration，鎖定 2027 Aug 場。同步取得 Schweser Notes 2027 版（四冊電子版）。CFA Institute 官方 Ethics 也要備齊。',
+     chapters:[
+      {id:'cr1',name:'完成 CFA L1 Early Registration（2027 Aug 場）',date:'10–11月',note:'越早報名越便宜',badge:'重要'},
+      {id:'cr2',name:'取得 Schweser Notes 四冊電子版（2027 版）',date:'11月',note:'',badge:''},
+      {id:'cr3',name:'瀏覽六科架構，制定 2027 Q1 讀書計畫',date:'12月',note:'',badge:''},
+    ]},
+  ]},
+  {id:'q3',label:'2027 Q1',sub:'1月─3月',exams:[
+    {id:'fsa',title:'CFA L1 — Book 2　Financial Statement Analysis',color:'#6b3fa0',
+     cost:'已含於報名費　｜　平日 1–1.5 小時，週末 3–4 小時',
+     prep:'最有優勢的科目，先建立信心。每章讀完立刻做 Schweser 練習題（讀 40%：做題 60%）。高頻考點：杜邦分解、DTA/DTL、租賃會計。',
+     chapters:[
+      {id:'f1',name:'三大報表結構與勾稽關係',date:'1/2–1/10',note:'',badge:''},
+      {id:'f2',name:'收入認列、應收帳款品質分析',date:'1/11–1/17',note:'',badge:''},
+      {id:'f3',name:'存貨 FIFO/LIFO、長期資產折舊',date:'1/18–1/24',note:'',badge:''},
+      {id:'f4',name:'所得稅：遞延稅、DTA/DTL',date:'1/25–1/31',note:'',badge:'高頻'},
+      {id:'f5',name:'非流動負債：租賃、退休金',date:'2/1–2/7',note:'',badge:''},
+      {id:'f6',name:'財務比率分析、杜邦分解（DuPont）',date:'2/8–2/14',note:'',badge:'高頻'},
+      {id:'f7',name:'Schweser Practice Q 整合做題',date:'2/15–2/21',note:'',badge:''},
+    ]},
+    {id:'eq1',title:'CFA L1 — Book 3　Equity（前半）',color:'#6b3fa0',
+     cost:'已含於報名費',
+     prep:'估值核心，與企業評價經驗直接對應。DDM、EV/EBITDA 等模型要熟，切入股票研究員的關鍵章節。',
+     chapters:[
+      {id:'e1',name:'股票市場結構、指數編製、ETF',date:'2/22–2/28',note:'',badge:''},
+      {id:'e2',name:'股票估值：DDM、FCFE、本益比、EV 倍數',date:'3/1–3/14',note:'',badge:'核心'},
+      {id:'e3',name:'產業分析、競爭優勢框架（Porter\'s Five Forces）',date:'3/15–3/21',note:'',badge:''},
+    ]},
+    {id:'eth1',title:'Ethics — 每週固定（貫穿全程）',color:'#0e6640',
+     cost:'CFA Institute 官方版（必看）',
+     prep:'一定要看官方版，Schweser 版本不夠。每週末 1 小時，貫穿整個備考期，不要集中在考前才讀。',
+     chapters:[
+      {id:'et1',name:'Standard I–II：Professionalism、Integrity of Capital Markets',date:'1月每週末',note:'',badge:'每週'},
+      {id:'et2',name:'Standard III–IV：Duties to Clients、Conflicts of Interest',date:'2月每週末',note:'',badge:'每週'},
+      {id:'et3',name:'Standard V–VII：Investment Analysis、Responsibilities',date:'3月每週末',note:'',badge:'每週'},
+    ]},
+    {id:'toefl1',title:'TOEFL iBT 備考啟動',color:'#0e6640',
+     cost:'USD 235 ≈ NT$7,500　｜　每天 30 分鐘',
+     prep:'多益 800 後英文底子穩，備考效率更高。使用 TPO 官方模擬題，四項同步推進。目標：R24+ L22+ S22+ W22+ = 90+。',
+     chapters:[
+      {id:'tf1',name:'閱讀：TPO 模擬 + 段落結構分析',date:'1月',note:'',badge:''},
+      {id:'tf2',name:'聽力：Lecture 型 + Note-taking 技巧',date:'2月',note:'',badge:''},
+      {id:'tf3',name:'口說：Task 1–4 模板建立 + AI 每日練習',date:'3月',note:'',badge:''},
+    ]},
+  ]},
+  {id:'q4',label:'2027 Q2',sub:'4月─6月',exams:[
+    {id:'fi',title:'CFA L1 — Book 3　Fixed Income（後半）',color:'#6b3fa0',
+     cost:'已含於報名費',
+     prep:'債券定價與利率風險是高頻考點，與 FM 基礎有銜接，應有優勢。每章讀完立刻做題。',
+     chapters:[
+      {id:'fi1',name:'債券基礎、殖利率曲線、票面 vs 殖利率',date:'4/1–4/10',note:'',badge:''},
+      {id:'fi2',name:'存續期間、凸性、利率風險管理',date:'4/11–4/20',note:'',badge:'高頻'},
+      {id:'fi3',name:'信用分析、信評模型、利差',date:'4/21–4/30',note:'',badge:''},
+    ]},
+    {id:'b1',title:'CFA L1 — Book 1　QM + Economics + Corporate',color:'#6b3fa0',
+     cost:'已含於報名費',
+     prep:'量化能力是你的優勢，QM 可快速過。Economics 概念為主，不必深入推導。Corporate Issuers 重點看資本結構決策。',
+     chapters:[
+      {id:'q1a',name:'統計推論、假設檢定、信賴區間',date:'5/1–5/7',note:'精算背景可快速',badge:''},
+      {id:'q1b',name:'回歸分析、時間序列、ML 入門（CFA 版）',date:'5/8–5/12',note:'',badge:''},
+      {id:'q1c',name:'個體 + 總體經濟學核心概念',date:'5/13–5/19',note:'',badge:''},
+      {id:'q1d',name:'Corporate Issuers：資本結構、股利政策、M&A',date:'5/20–5/26',note:'',badge:''},
+    ]},
+    {id:'b4',title:'CFA L1 — Book 4　Derivatives + Alternatives + PM',color:'#6b3fa0',
+     cost:'已含於報名費',
+     prep:'Derivatives 和 Alt 權重較低，概念為主。PM 要理解 IPS 和資產配置邏輯。6 月底完成全科目第一輪掃題。',
+     chapters:[
+      {id:'d1',name:'衍生品：期貨、選擇權定價、Swap',date:'5/27–6/5',note:'',badge:''},
+      {id:'d2',name:'另類投資：REITs、PE、對沖基金、實物資產',date:'6/6–6/12',note:'',badge:''},
+      {id:'d3',name:'Portfolio Management：IPS、資產配置、CAPM',date:'6/13–6/20',note:'',badge:''},
+      {id:'d4',name:'Schweser 全科目題庫第一輪掃題',date:'6/21–6/30',note:'',badge:''},
+    ]},
+    {id:'toefl2',title:'TOEFL iBT — 寫作強化',color:'#0e6640',
+     cost:'已含於報名費',
+     prep:'每週寫 2 篇：Integrated（150–225 字）+ Independent（350+ 字）。重點：論點清晰、用詞多元、過渡詞自然。',
+     chapters:[
+      {id:'wr1',name:'Integrated Writing：聽讀整合筆記技巧',date:'4–5月',note:'150–225 字',badge:''},
+      {id:'wr2',name:'Independent Writing：論點展開 + 例子強化',date:'5–6月',note:'350+ 字',badge:''},
+    ]},
+  ]},
+  {id:'q5',label:'2027 Q3',sub:'7月─9月',exams:[
+    {id:'cfaexam',title:'CFA Level 1 — 衝刺 + 正式應考',color:'#6b3fa0',
+     cost:'已於 2026 Q4 完成報名',
+     prep:'最後 6 週全力做題。Official Mock Exam x2，目標 65%+ 再進場。弱點科目（FSA、Ethics）優先補強。考前 3 天輕鬆複習，不要硬塞新內容。',
+     chapters:[
+      {id:'ce1',name:'官方 Mock Exam 第一回合 + 詳細對答',date:'7/1–7/14',note:'',badge:''},
+      {id:'ce2',name:'弱點科目重點補強（FSA + Ethics 優先）',date:'7/15–7/25',note:'',badge:''},
+      {id:'ce3',name:'官方 Mock Exam 第二回合（目標 65%+）',date:'7/26–8/5',note:'',badge:''},
+      {id:'ce4',name:'考前最後複習：重點公式表 + Ethics 條文',date:'考前 3 天',note:'',badge:''},
+      {id:'ce5',name:'CFA Level 1 正式應考',date:'2027 Aug',note:'最重要里程碑',badge:'考試'},
+    ]},
+    {id:'report',title:'研究報告撰寫',color:'#854d0e',
+     cost:'免費（自行研究）　｜　7月啟動，9月完稿',
+     prep:'選 1 家台灣或香港上市公司，完成 8–15 頁 PDF 報告。這是求職最直接的敲門磚，比任何證照都有說服力。格式參考外資券商研究報告。',
+     chapters:[
+      {id:'r1',name:'選題 + 產業分析框架建立',date:'7/1–7/15',note:'選有興趣的產業',badge:''},
+      {id:'r2',name:'財報分析：近 3 年三表 + 財務比率',date:'7/16–7/31',note:'',badge:''},
+      {id:'r3',name:'DCF 估值模型建立（Excel）',date:'8/1–8/15',note:'含敏感度分析',badge:''},
+      {id:'r4',name:'可比公司分析（Comps）+ 投資建議',date:'8/16–8/31',note:'明確 Buy/Hold/Sell',badge:''},
+      {id:'r5',name:'報告排版潤稿，輸出 PDF（8–15 頁）',date:'9/1–9/15',note:'',badge:''},
+    ]},
+    {id:'toeflexam',title:'TOEFL iBT — 衝刺 + 正式應考',color:'#0e6640',
+     cost:'USD 235 ≈ NT$7,500　｜　報名截止：考前 1 個月',
+     prep:'CFA 考完後立刻全力衝托福。TPO 全真模擬至少 3 次。口說 Task 3–4 是整合題型，每天用 AI 練習。目標：90+。',
+     chapters:[
+      {id:'tf4',name:'TPO 全真模擬 x3 + 四項弱點分析',date:'8月',note:'',badge:''},
+      {id:'tf5',name:'口說 Task 3–4 加強（每天 AI 練習）',date:'8月',note:'',badge:''},
+      {id:'tf6',name:'TOEFL iBT 正式應考（目標 90+）',date:'9月',note:'',badge:'考試'},
+    ]},
+  ]},
+  {id:'q6',label:'2027 Q4',sub:'10月─12月',exams:[
+    {id:'job',title:'積極求職投遞',color:'#0e6640',
+     cost:'時間成本',
+     prep:'手上籌碼：多益 800+ / 托福 90+ / CFA L1 / 研究報告 / 企業評價 1.5 年 / 財務會計 2 年。故事線：估值底子 + 財報能力 + 量化背景。',
+     chapters:[
+      {id:'j1',name:'整理履歷：突顯估值 + 財報 + 量化底子',date:'10月初',note:'研究報告列附件',badge:''},
+      {id:'j2',name:'企業評價分析師：會計師事務所、投顧',date:'10–11月',note:'最低切入難度',badge:'優先'},
+      {id:'j3',name:'股票研究員：券商、投顧研究部門',date:'10–11月',note:'需研究報告作品',badge:''},
+      {id:'j4',name:'FP&A 分析師：大型外商備選',date:'11月',note:'',badge:''},
+      {id:'j5',name:'面試準備：估值題、財報分析、案例討論',date:'持續',badge:''},
+    ]},
+    {id:'cfa2',title:'CFA Level 2 早鳥報名',color:'#6b3fa0',
+     cost:'Early ≈ USD 940　｜　11–12 月開放報名',
+     prep:'L1 成績約考後 2 個月出爐。確認通過後立刻報 2028 Feb 場，邊工作邊備考 L2。',
+     chapters:[
+      {id:'c2a',name:'確認 CFA L1 成績通過',date:'10月',note:'',badge:''},
+      {id:'c2b',name:'CFA L2 Early Registration（2028 Feb 場）',date:'11–12月',note:'越早報越便宜',badge:'重要'},
+      {id:'c2c',name:'評估新加坡 NUS/NTU MBA 申請條件',date:'Q4',note:'托福已有成績，GMAT 視需求',badge:''},
+    ]},
+  ]},
+];
+
+let data;
+let activeQid = 'q1';
+let editingCid = null;
+
+function loadData() {
+  try {
+    const raw = localStorage.getItem(STORAGE_KEY);
+    data = raw ? JSON.parse(raw) : JSON.parse(JSON.stringify(RAW));
+  } catch(e) { data = JSON.parse(JSON.stringify(RAW)); }
+}
+
+function saveData() {
+  try { localStorage.setItem(STORAGE_KEY, JSON.stringify(data)); } catch(e) {}
+}
+
+function toast(msg) {
+  const el = document.getElementById('toast');
+  el.textContent = msg;
+  el.classList.add('show');
+  clearTimeout(el._t);
+  el._t = setTimeout(() => el.classList.remove('show'), 1800);
+}
+
+function totalStats() {
+  let total = 0, done = 0;
+  data.forEach(q => q.exams.forEach(e => e.chapters.forEach(c => { total++; if(c.done) done++; })));
+  return { total, done, pct: total ? Math.round(done/total*100) : 0 };
+}
+
+function quarterStats(qid) {
+  const q = data.find(x => x.id === qid);
+  if (!q) return { total:0, done:0, pct:0 };
+  let total = 0, done = 0;
+  q.exams.forEach(e => e.chapters.forEach(c => { total++; if(c.done) done++; }));
+  return { total, done, pct: total ? Math.round(done/total*100) : 0 };
+}
+
+function updateStats() {
+  const s = totalStats();
+  const q = quarterStats(activeQid);
+  document.getElementById('s-pct').textContent = s.pct + '%';
+  document.getElementById('s-sub').textContent = s.done + ' / ' + s.total + ' 章節完成';
+  document.getElementById('s-bar').style.width = s.pct + '%';
+  document.getElementById('q-pct').textContent = q.pct + '%';
+  document.getElementById('q-sub').textContent = q.done + ' / ' + q.total + ' 章節完成';
+  document.getElementById('q-bar').style.width = q.pct + '%';
+  document.getElementById('s-done').textContent = s.done;
+  document.getElementById('s-left').textContent = s.total - s.done;
+}
+
+function renderTabs() {
+  document.getElementById('tabs').innerHTML = data.map(q =>
+    `<button class="tab${q.id === activeQid ? ' active' : ''}" onclick="switchTab('${q.id}')">${q.label}<br><span style="font-size:10px;opacity:.6">${q.sub}</span></button>`
+  ).join('');
+}
+
+function badgeClass(b) {
+  if (!b) return '';
+  const map = { '高頻':'badge-hot','關鍵':'badge-key','重要':'badge-key','考試':'badge-exam','每日':'badge-daily','核心':'badge-hot','優先':'badge-hot','每週':'badge-daily' };
+  return map[b] || 'badge-default';
+}
+
+function examPct(e) {
+  const total = e.chapters.length, done = e.chapters.filter(c => c.done).length;
+  return total ? Math.round(done/total*100) : 0;
+}
+
+function pctColor(pct) {
+  if (pct === 100) return 'var(--green)';
+  if (pct > 50) return 'var(--purple)';
+  return 'var(--text3)';
+}
+
+function renderChapter(qid, eid, c) {
+  const bc = badgeClass(c.badge);
+  return `
+  <div class="ch-row" id="ch_${c.id}">
+    <div class="ch-check${c.done?' done':''}" onclick="toggleDone('${qid}','${eid}','${c.id}')"></div>
+    <div class="ch-info">
+      <div class="ch-name-line">
+        <span class="ch-name${c.done?' done':''}">${c.name}</span>
+        ${c.badge ? `<span class="ch-badge ${bc}">${c.badge}</span>` : ''}
+        <span class="ch-date">${c.date}</span>
+        <button class="edit-btn" onclick="toggleEdit('${qid}','${eid}','${c.id}')">編輯</button>
+      </div>
+      ${c.note ? `<div class="ch-note">${c.note}</div>` : ''}
+    </div>
+  </div>
+  <div class="edit-form" id="ef_${c.id}" style="display:none">
+    <input id="en_${c.id}" value="${c.name.replace(/"/g,'&quot;')}" placeholder="章節名稱">
+    <div class="ef-row">
+      <input id="ed_${c.id}" value="${c.date}" placeholder="日期">
+      <input id="eb_${c.id}" value="${c.badge||''}" placeholder="標籤（高頻/考試/每日…）">
+    </div>
+    <input id="eno_${c.id}" value="${c.note||''}" placeholder="備注（選填）">
+    <div class="ef-actions">
+      <button class="ef-save" onclick="saveEdit('${qid}','${eid}','${c.id}')">儲存</button>
+      <button class="ef-cancel" onclick="closeEdit('${c.id}')">取消</button>
+      <button class="ef-del" onclick="deleteCh('${qid}','${eid}','${c.id}')">刪除</button>
+    </div>
+  </div>`;
+}
+
+function renderExam(qid, e) {
+  const pct = examPct(e);
+  return `
+  <div class="exam-card" id="exam_${e.id}">
+    <div class="exam-head">
+      <div class="exam-stripe" style="background:${e.color}"></div>
+      <div class="exam-title-wrap">
+        <div class="exam-title">${e.title}</div>
+        <div class="exam-cost">${e.cost}</div>
+      </div>
+      <div class="exam-pct" style="color:${pctColor(pct)}">${pct}%</div>
+    </div>
+    <div class="exam-body">
+      <div class="exam-prep">${e.prep}</div>
+      ${e.chapters.map(c => renderChapter(qid, e.id, c)).join('')}
+      <button class="add-ch" onclick="showAddForm('${qid}','${e.id}')">+ 新增章節</button>
+      <div class="edit-form" id="addform_${e.id}" style="display:none">
+        <input id="an_${e.id}" placeholder="章節名稱">
+        <div class="ef-row">
+          <input id="ad_${e.id}" placeholder="日期">
+          <input id="ab_${e.id}" placeholder="標籤（選填）">
+        </div>
+        <input id="ano_${e.id}" placeholder="備注（選填）">
+        <div class="ef-actions">
+          <button class="ef-save" onclick="addChapter('${qid}','${e.id}')">新增</button>
+          <button class="ef-cancel" onclick="document.getElementById('addform_${e.id}').style.display='none'">取消</button>
+        </div>
+      </div>
+    </div>
+  </div>`;
+}
+
+function switchTab(qid) {
+  activeQid = qid;
+  renderTabs();
+  document.getElementById('content').innerHTML = data.find(x=>x.id===qid).exams.map(e=>renderExam(qid,e)).join('');
+  updateStats();
+}
+
+function refreshExamCard(qid, e) {
+  const el = document.getElementById('exam_' + e.id);
+  if (el) { const t = document.createElement('div'); t.innerHTML = renderExam(qid, e); el.replaceWith(t.firstElementChild); }
+}
+
+function toggleDone(qid, eid, cid) {
+  const q = data.find(x=>x.id===qid), e = q.exams.find(x=>x.id===eid), c = e.chapters.find(x=>x.id===cid);
+  c.done = !c.done;
+  saveData(); refreshExamCard(qid, e); updateStats();
+  toast(c.done ? '完成 ✓' : '取消完成');
+}
+
+function toggleEdit(qid, eid, cid) {
+  if (editingCid && editingCid !== cid) { const p = document.getElementById('ef_'+editingCid); if(p) p.style.display='none'; }
+  const f = document.getElementById('ef_'+cid);
+  if (!f) return;
+  const show = f.style.display !== 'none';
+  f.style.display = show ? 'none' : 'block';
+  editingCid = show ? null : cid;
+}
+
+function closeEdit(cid) { const f=document.getElementById('ef_'+cid); if(f) f.style.display='none'; editingCid=null; }
+
+function saveEdit(qid, eid, cid) {
+  const q=data.find(x=>x.id===qid), e=q.exams.find(x=>x.id===eid), c=e.chapters.find(x=>x.id===cid);
+  c.name = document.getElementById('en_'+cid).value || c.name;
+  c.date = document.getElementById('ed_'+cid).value;
+  c.badge = document.getElementById('eb_'+cid).value;
+  c.note = document.getElementById('eno_'+cid).value;
+  saveData(); closeEdit(cid); refreshExamCard(qid, e); toast('已儲存');
+}
+
+function deleteCh(qid, eid, cid) {
+  if (!confirm('確定刪除？')) return;
+  const q=data.find(x=>x.id===qid), e=q.exams.find(x=>x.id===eid);
+  e.chapters = e.chapters.filter(x=>x.id!==cid);
+  saveData(); refreshExamCard(qid, e); updateStats(); toast('已刪除');
+}
+
+function showAddForm(qid, eid) { document.getElementById('addform_'+eid).style.display='block'; }
+
+function addChapter(qid, eid) {
+  const name = document.getElementById('an_'+eid).value.trim();
+  if (!name) return;
+  const q=data.find(x=>x.id===qid), e=q.exams.find(x=>x.id===eid);
+  e.chapters.push({ id:eid+'_'+Date.now(), name, date:document.getElementById('ad_'+eid).value, badge:document.getElementById('ab_'+eid).value, note:document.getElementById('ano_'+eid).value, done:false });
+  saveData(); document.getElementById('addform_'+eid).style.display='none'; refreshExamCard(qid, e); updateStats(); toast('新增成功');
+}
+
+function resetProgress() {
+  if (!confirm('確定重置所有勾選進度？內容不會消失。')) return;
+  data.forEach(q=>q.exams.forEach(e=>e.chapters.forEach(c=>c.done=false)));
+  saveData(); switchTab(activeQid); toast('進度已重置');
+}
+
+function exportStatus() {
+  const s=totalStats(); let out='Justin 生涯規劃進度報告\n匯出時間：'+new Date().toLocaleString('zh-TW')+'\n總體進度：'+s.pct+'% ('+s.done+'/'+s.total+')\n\n';
+  data.forEach(q=>{ const qs=quarterStats(q.id); out+='【'+q.label+' '+q.sub+'】 '+qs.pct+'%\n'; q.exams.forEach(e=>{ out+='  '+e.title+' ('+examPct(e)+'%)\n'; e.chapters.forEach(c=>{ out+='    ['+(c.done?'V':' ')+'] '+c.name+' '+c.date+'\n'; }); }); out+='\n'; });
+  const a=document.createElement('a'); a.href=URL.createObjectURL(new Blob([out],{type:'text/plain;charset=utf-8'})); a.download='justin_progress_'+new Date().toISOString().slice(0,10)+'.txt'; a.click(); toast('進度已匯出');
+}
+
+loadData(); renderTabs(); switchTab('q1');
+</script>
+</body>
+</html>
